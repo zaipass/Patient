@@ -1,83 +1,128 @@
-* {padding: 0xp;margin: 0px;}
+* {
+  padding: 0xp;
+  margin: 0px;
+}
 
 .box-list {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .box-list .title {
-    height: 4em;
-    width: 100%;
-    background: #ddd;
+  height: 4em;
+  width: 100%;
+  background: #4caf50;
 }
 .box-list .title span {
-    line-height: 4em;
+  line-height: 4em;
 }
 
 .web-title {
-    float: left;
-    margin-left: 2em;
+  float: left;
+  margin-left: 1em;
+  font-size: 25px;
+  line-height: 3em !important;
+  text-shadow: 2px 2px gray;
 }
 .user-div {
-    float: right;
+  float: right;
 }
-.user-div .user-info-name {
-    float: left;
-    margin-right: 1em;
+.user-div .user-info-module {
+  float: left;
+  margin-right: 1em;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
- .user-div .logout-span {
-    float: right;
-    margin-right: 2em;
+.user-div .logout-span {
+  float: right;
+  margin-right: 2em;
 }
-
-.pagination ul{
-    list-style: none;
+.user-logo {
+  float: left;
+  height: 100%;
+}
+.user-logo-img {
+  margin-top: 1em;
+}
+.pagination {
+  margin-top: 0.8em;
+}
+.pagination ul {
+  list-style: none;
 }
 .pagination ul li {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-    margin: 0 4px;
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
 }
 .pagination ul li:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 /*.pagination ul li a {
     text-decoration: none;
 }*/
 
 .pagination ul .active {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
-  border: 1px solid #4CAF50;
+  border: 1px solid #4caf50;
 }
 
-.pagination li:hover:not(.active) {background-color: #ddd;}
+.pagination li:hover:not(.active) {
+  background-color: #ddd;
+}
 .pagination input {
-    height: 40px;
-    width: 40px;
-    border: 1px solid #ddd;
-    margin-left: 10px;
-    margin-top: 15px;
-    border-radius: 5px 5px 5px 5px;
+  height: 40px;
+  width: 40px;
+  border: 1px solid #ddd;
+  margin-left: 10px;
+  /* margin-top: 15px; */
+  border-radius: 5px 5px 5px 5px;
 }
 .paginationjs {
-    display: flex;
+  display: flex;
 }
 
 .info-table {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
-  word-wrap:break-word;
+  word-wrap: break-word;
 }
 
-.info-table th, td {
+.info-table th,
+td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.info-table tr:nth-child(even) {background-color: #f2f2f2;}
+.info-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* 用户功能部分 */
+.func-inner-box {
+  height: 4.5em;
+  width: 6em;
+  background: #4caf50;
+  z-index: 999;
+  display: none;
+  flex-direction: column;
+}
+.func-inner-box a {
+  padding: 1em 1em;
+  font-size: 14px;
+  background: rgb(149, 194, 164);
+  border-radius: 10px 10px 10px 10px;
+}
+.username-span {
+  width: 6em;
+}
+.username-span:hover {
+  cursor: pointer;
+}

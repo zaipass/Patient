@@ -1,4 +1,4 @@
-function submit_form(){
+function submit_form() {
     clear_all();
     var csrftoken = getCookie('csrftoken');
     $(".submit-btn").removeAttr("onclick");
@@ -11,13 +11,13 @@ function submit_form(){
             'X-CSRFToken': csrftoken
         },
         data: data,
-        success: function(resp, txt, xhr){
+        success: function (resp, txt, xhr) {
             $(".submit-btn").attr("onclick", "submit_form()");
             $(".submit-btn").prop("value", "提交");
             $(".right-msg").html('*** ' + resp.detail + ' ***');
             reset_form();
         },
-        error: function(jqXHR, txt, status){
+        error: function (jqXHR, txt, status) {
             $(".submit-btn").attr("onclick", "submit_form()");
             $(".submit-btn").prop("value", "提交");
             $(".error-msg").html('错误:<br />' + jqXHR.responseJSON.detail);
@@ -25,19 +25,19 @@ function submit_form(){
     })
 }
 
-function reset_form(){
+function reset_form() {
     $("#form-into").trigger("reset");
 }
 
-function click_input(){
+function click_input() {
     $(".right-msg").text("");
 }
 
-function clear_all(){
+function clear_all() {
     $(".right-msg").text("");
     $(".error-msg").text("");
 }
 
-$(function(){
+$(function () {
     $(".normal").click(click_input);
 })

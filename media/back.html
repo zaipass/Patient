@@ -1,40 +1,44 @@
 <html>
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <title>后台登录</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <!-- <link rel="stylesheet" href="css/back.css"> -->
-    <!-- <script src="jquery/jquery.min.js"></script> -->
-    <!-- <script src="js/get-cookie.js"></script> -->
-    <!-- <script src="js/get-csrftoken.js"></script> -->
 
-    <link rel="stylesheet" href="{% static 'css/back.css' %}">
-    <script src="{% static 'jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'js/get-cookie.js' %}"></script>
-    <script src="{% static 'js/get-csrftoken.js' %}"></script>
+<head>
+  {% load static %}
+  <meta charset="UTF-8" />
+  <title>后台登录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <!-- <link rel="stylesheet" href="css/back.css"> -->
+  <!-- <script src="jquery/jquery.min.js"></script> -->
+  <!-- <script src="js/get-cookie.js"></script> -->
+  <!-- <script src="js/get-csrftoken.js"></script> -->
+
+  <link rel="stylesheet" href="{% static 'css/back.css' %}" />
+  <script src="{% static 'jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'js/get-cookie.js' %}"></script>
+  <script src="{% static 'js/get-csrftoken.js' %}"></script>
 </head>
+
 <body>
-    <div class="ad-box">
-        <div class="box-div">
-            <form action="" id="ad-form-login">
-                <div class="title"><span>登录</span></div>
-                <div class="under-line"></div>
-                <div class="input-label">
-                    <input type="text" name="username" placeholder="账号" class="normal">
-                </div>
-                <div class="input-label">
-                    <input type="password" name="password" placeholder="密码" class="normal">
-                    <span class="sub-span sub-btn" onclick="sub()"><img src="{% static 'images/login.png' %}" alt="" width="45" height="45"></span>
-                </div>
-                <div class="error-msg">
-                    <span class="error-info"></span>
-                </div>
-            </form>
-            <button onclick="logout()">logout</button>
+  <div class="ad-box">
+    <div class="box-div">
+      <form action="" id="ad-form-login">
+        <div class="title"><span>登录</span></div>
+        <div class="under-line"></div>
+        <div class="input-label">
+          <input type="text" name="username" placeholder="账号" class="normal" />
         </div>
+        <div class="input-label">
+          <input type="password" name="password" placeholder="密码" class="normal" />
+          <span class="sub-span sub-btn" onclick="sub()">
+            <img src="{% static 'images/login.png' %}" alt="" width="45" height="45" />
+          </span>
+        </div>
+        <div class="error-msg">
+          <span class="error-info"></span>
+        </div>
+      </form>
     </div>
-    <!-- <script src="js/back.js"></script> -->
-    <script src="{% static 'js/back.js' %}"></script>
+  </div>
+  <!-- <script src="js/back.js"></script> -->
+  <script src="{% static 'js/back.js' %}"></script>
 </body>
+
 </html>

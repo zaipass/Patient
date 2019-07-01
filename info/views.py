@@ -12,13 +12,12 @@ from django.contrib.auth import (
 )
 
 from django.conf import settings
-
 from django.middleware.csrf import get_token
-
 from info.models import Info, Token
 from info.error_dict import error_messages
-from info.utils import query_to_dict
+from info.utils import query_to_dict, output_file, write_row, save_file
 from info.jwt_token import decorator_token
+from info.constants import xlsx_header
 
 import jwt
 import datetime
@@ -45,16 +44,73 @@ def get_csrftoken(request):
 
 
 @decorator_token()
+def file_out(request):
+    username = request.user.username
+
+    try:
+        id_list = request.session.get(username)
+    except KeyError:
+        id_list = list()
+
+    try:
+        info_objects = Info.objects.filter(id__in=id_list)
+
+        filepath = ''.join([settings.BASE_DIR, '/file_download/info.xlsx'])
+
+        ws, writer = output_file(filename=filepath)
+
+        header_column = dict()
+
+        # write header
+        current_row = 0
+        current_col = 0
+        for key, value in xlsx_header.items():
+
+            write_row(ws, current_row, current_col, value)
+
+            header_column.update({key: current_col})
+
+            current_col += 1
+
+        # writer content
+        for obj in info_objects:
+            current_row += 1
+
+            for name, col_idx in header_column.items():
+
+                write_row(ws, current_row, col_idx, obj.__dict__.get(name))
+
+        save_file(writer)
+    except Exception:
+        return JsonResponse({"detail": "表格导出失败"}, status=400)
+
+    return JsonResponse({"detail": "下载成功", "filename": 'info.xlsx'})
+
+
+@decorator_token()
 def list_info(request):
     page = request.GET.get("pageNumber", 1)
 
-    info_objects = Info.objects.order_by("-create_time", "clinical_name")
+    info_objects = Info.objects.all().order_by("-create_time", "clinical_name")
+    try:
+        username = request.user.username
+    except Exception:
+        username = "user"
+
+    try:
+        id_list = []
+        for i in info_objects.values("id"):
+            id_list.append(i.get("id"))
+
+        request.session["%s" % username] = id_list
+    except Exception:
+        pass
 
     paginator_object = Paginator(info_objects, settings.PER_PAGE_NUMS)
 
     total_numbers = paginator_object.count  # 总数
-    total_pages = paginator_object.num_pages  # 总页数
-    c = paginator_object.page_range  # 页数范围
+    # total_pages = paginator_object.num_pages  # 总页数
+    # c = paginator_object.page_range  # 页数范围
 
     d = paginator_object.get_page(page)
 
@@ -65,11 +121,7 @@ def list_info(request):
     response_info = [info["fields"] for info in info_list]
 
     return JsonResponse(
-        {
-            "data": response_info,
-            "total_numbers": total_numbers,
-            "username": request.user.username,
-        }
+        {"data": response_info, "total_numbers": total_numbers, "username": username}
     )
 
 
