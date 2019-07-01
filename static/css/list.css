@@ -1,0 +1,83 @@
+* {padding: 0xp;margin: 0px;}
+
+.box-list {
+    display: flex;
+    flex-direction: column;
+}
+.box-list .title {
+    height: 4em;
+    width: 100%;
+    background: #ddd;
+}
+.box-list .title span {
+    line-height: 4em;
+}
+
+.web-title {
+    float: left;
+    margin-left: 2em;
+}
+.user-div {
+    float: right;
+}
+.user-div .user-info-name {
+    float: left;
+    margin-right: 1em;
+}
+ .user-div .logout-span {
+    float: right;
+    margin-right: 2em;
+}
+
+.pagination ul{
+    list-style: none;
+}
+.pagination ul li {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+}
+.pagination ul li:hover {
+    cursor: pointer;
+}
+/*.pagination ul li a {
+    text-decoration: none;
+}*/
+
+.pagination ul .active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination li:hover:not(.active) {background-color: #ddd;}
+.pagination input {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #ddd;
+    margin-left: 10px;
+    margin-top: 15px;
+    border-radius: 5px 5px 5px 5px;
+}
+.paginationjs {
+    display: flex;
+}
+
+.info-table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  word-wrap:break-word;
+}
+
+.info-table th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.info-table tr:nth-child(even) {background-color: #f2f2f2;}

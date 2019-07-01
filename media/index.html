@@ -1,0 +1,64 @@
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>填写信息表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- <link rel="stylesheet" href="css/index.css"> -->
+    <!-- <script src="./jquery/jquery.min.js"></script> -->
+    <!-- <script src="./js/get-cookie.js"></script> -->
+    <!-- <script src="./js/get-csrftoken.js"></script> -->
+
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/get-csrftoken.js' %}"></script>
+    <script src="{% static 'js/get-cookie.js' %}"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="inner-box">
+            <div class="box-header">
+                <span class="title">信息登记</span>
+            </div>
+            <div class="border-line"></div>
+            <div class="form-info">
+                <form action="" id="form-into">
+                    <div class="input-label">
+                        <input type="text" name="clinical_name" placeholder="诊所名称" class="normal">
+                    </div>
+                    <div class="input-label">
+                        <input type="text" name="doc_name" placeholder="医生姓名" class="normal">
+                    </div>
+                    <div class="input-label">
+                        <input type="text" name="doc_phone" placeholder="医生电话" class="normal">
+                    </div>
+                    <div class="input-label">
+                        <input type="text" name="patient_name" placeholder="患者姓名" class="normal">
+                    </div>
+                    <div class="input-label">
+                        <input type="text" name="sex_age" placeholder="年龄/性别" class="normal">
+                    </div>
+                    <div class="input-label">
+                        <input type="text" name="patient_phone" placeholder="患者电话" class="normal">
+                    </div>
+                    <div class="input-label">
+                        <!-- <textarea name="patient_detail" id="" cols="30" rows="10"></textarea> -->
+                        <input type="text" name="patient_detail" placeholder="患者描述" class="normal">
+                    </div>
+                    <div class="input-label submit-div">
+                        <input type="button" value="提交" class="submit-btn" onclick="submit_form()">
+                    </div>
+                </form>
+            </div>
+            <div class="div-message">
+                <p class="error-msg"></p>
+                <p class="right-msg"></p>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="js/index.js"></script> -->
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

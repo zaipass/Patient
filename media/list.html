@@ -1,0 +1,43 @@
+<html>
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- <link rel="stylesheet" href="css/list.css">
+    <script src="jquery/jquery.min.js"></script>
+    <script src="jquery/jquery.pagination.min.js"></script>
+    <script src="js/get-cookie.js"></script> -->
+
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'jquery/pagination.js' %}"></script>
+    <script src="{% static 'js/get-cookie.js' %}"></script>
+
+</head>
+<body>
+    <div class="box-list">
+        <div class="title">
+            <span class="web-title">信息列表</span>
+            <div class="user-div">
+                <span class="user-info-name">user</span>
+                <span class="logout-span">
+                    <a href="javascript:void(0);" onclick="logout()">退出账号</a>
+                </span>
+            </div>
+        </div>
+        <div class="container">
+            <table class="info-table">
+            </table>
+        </div>
+
+        <div id="pagination" class="page pagination">
+        </div>
+    </div>
+    <!-- <script src="js/info-list.js"></script> -->
+    <!-- <script src="js/default.js"></script>     -->
+
+    <script src="{% static 'js/default.js' %}"></script>
+    <script src="{% static 'js/info-list.js' %}"></script>
+</body>
+</html>
