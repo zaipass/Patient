@@ -8,7 +8,12 @@ import jwt
 
 
 def valiadate_token(request):
-    token = request.headers.get('Jwt-Token', None)
+    # token = request.headers.get('Jwt-Token', None)
+    try:
+        token = request.META.get('HTTP_JWT_TOKEN', None)
+    except Exception:
+        token = request.headers.get('Jwt-Token', None)
+
     user_info = None
     detail = None
     types = 'error'
