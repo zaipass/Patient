@@ -4,7 +4,5 @@
 .DS_Store?
 *__pycache__*
 /collect_static/*
-/info/*
-!/info/migrations/
 /info/migrations/*
 !/info/migrations/__init__.py
