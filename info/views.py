@@ -150,9 +150,9 @@ def create_info(request):
         info.full_clean()
     except ValidationError as e:
 
-        for k in e.message_dict.keys():
-            if k in error_messages.keys():
-                response_data += "%s<br />" % error_messages.get(k)
+        for k, v in e.message_dict.items():
+            if k in xlsx_header.keys():
+                response_data += "%s:%s<br />" % (xlsx_header.get(k), ', '.join(v))
 
         return JsonResponse({"detail": response_data}, status=400)
 

@@ -9,7 +9,10 @@ from info.utils import CodeUsernameValidator
 from django.utils.translation import gettext_lazy as _
 
 from django.core.mail import send_mail
+from django.core.validators import RegexValidator
 from django.utils import timezone
+
+from info.error_dict import field_error_msg
 
 
 class Info(models.Model):
@@ -20,23 +23,29 @@ class Info(models.Model):
                                      blank=True,
                                      max_length=50)
     doc_name = models.CharField(max_length=20,
-                                blank=True,
                                 verbose_name='医生姓名',
-                                help_text='医生姓名')
+                                help_text='医生姓名',
+                                error_messages=field_error_msg,)
     doc_phone = models.CharField(max_length=11,
-                                 blank=True,
+                                 validators=[RegexValidator(regex=r'^1[3-9]\d{9}$',
+                                                            message='输入手机号码不合理',
+                                                            code='patient_phone'), ],
+                                 error_messages=field_error_msg,
                                  verbose_name='医生电话',
                                  help_text='医生电话')
     patient_name = models.CharField(max_length=20,
-                                    blank=True,
                                     verbose_name='患者姓名',
+                                    error_messages=field_error_msg,
                                     help_text='患者姓名')
     sex_age = models.CharField(max_length=6,
                                blank=True,
                                verbose_name='年龄/性别',
                                help_text='年龄/性别')
     patient_phone = models.CharField(max_length=11,
-                                     blank=True,
+                                     error_messages=field_error_msg,
+                                     validators=[RegexValidator(regex=r'^1[3-9]\d{9}$',
+                                                                message='输入手机号码不合理',
+                                                                code='patient_phone'), ],
                                      verbose_name='患者电话',
                                      help_text='患者电话')
     patient_detail = models.CharField(max_length=300,
