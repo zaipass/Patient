@@ -71,7 +71,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [MEDIA_ROOT],
+        "DIRS": [
+            os.path.join(BASE_DIR, "static"),
+            os.path.join(BASE_DIR, "static/html")
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

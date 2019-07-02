@@ -15,15 +15,35 @@ def output_file(filename="./demo.xlsx"):
     df.to_excel(writer, sheet_name="信息表", index=False)
     wb = writer.book
     ws = writer.sheets["信息表"]
-    return (ws, writer)
+
+    return (ws, writer, wb)
 
 
-def write_row(ws, row, col, value):
-    ws.write(row, col, value)
+def write_row(ws, row, col, value, style=None):
+    if style:
+        ws.write(row, col, value, style)
+
+    ws.write(row, col, value, style)
 
 
 def save_file(writer):
     writer.save()
+
+
+def style_header(wb):
+    # 1. 定义样式
+    demo_style = {
+        'bold': True,
+        'fg_color': '#59c4b8',
+        'font_size': 15,
+        'align': 'center',
+        'right': 1,
+        'bottom': 1,
+        'font_color': 'white',
+    }
+    style = wb.add_format(demo_style)
+
+    return style
 
 
 def query_to_dict(data):

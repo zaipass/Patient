@@ -15,7 +15,9 @@ from django.conf import settings
 from django.middleware.csrf import get_token
 from info.models import Info, Token
 from info.error_dict import error_messages
-from info.utils import query_to_dict, output_file, write_row, save_file
+from info.utils import (
+    query_to_dict, output_file, write_row, save_file, style_header
+)
 from info.jwt_token import decorator_token
 from info.constants import xlsx_header
 
@@ -57,16 +59,23 @@ def file_out(request):
 
         filepath = ''.join([settings.BASE_DIR, '/file_download/info.xlsx'])
 
-        ws, writer = output_file(filename=filepath)
+        ws, writer, wb = output_file(filename=filepath)
 
         header_column = dict()
+
+        style_title = style_header(wb)
+        header_width = 25
+
+        ws.set_row(0, 25)
 
         # write header
         current_row = 0
         current_col = 0
         for key, value in xlsx_header.items():
 
-            write_row(ws, current_row, current_col, value)
+            write_row(ws, current_row, current_col, value, style=style_title)
+
+            ws.set_column(current_col, current_col, header_width)
 
             header_column.update({key: current_col})
 
